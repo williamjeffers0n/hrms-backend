@@ -1,7 +1,19 @@
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { AllowNull, AutoIncrement, Column, DataType, Model, PrimaryKey, Table } from 'sequelize-typescript';
 
-@Table({ tableName: 'country', timestamps: true, paranoid: true }) // Soft delete enabled
+@Table({ 
+  tableName: 'country', 
+  timestamps: true, 
+  paranoid: true })
 export class Country extends Model<Country> {
+  @PrimaryKey
+  @AutoIncrement
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: false,
+    unique: true
+  })
+  id: number
+
   @Column({
     type: DataType.STRING,
     allowNull: false,
@@ -9,9 +21,9 @@ export class Country extends Model<Country> {
   })
   name: string;
 
+  @AllowNull(false)
   @Column({
     type: DataType.STRING,
-    allowNull: false,
     unique: true,
   })
   code: string;

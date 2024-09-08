@@ -5,7 +5,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { Country } from './models/country.model';
 
 @Module({
-  imports:[SequelizeModule.forFeature([Country])],
+  imports: [SequelizeModule.forFeature([Country])],
   controllers: [CountryController],
   providers: [CountryService]
 })
